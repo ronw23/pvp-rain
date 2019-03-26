@@ -4,14 +4,14 @@ local function get_total_production_counts(production_statistics)
   for name, value in pairs (produced) do
     local prototype = game.item_prototypes[name]
     if prototype.group.name == "intermediate-products" then
-      consumed[name] = value
+      if prototype.subgroup.name == "science-pack" then
+        consumed[name] = 0
+      else
+        consumed[name] = value
+      end
     end
   end
   for name, value in pairs (consumed) do
-    local prototype = game.item_prototypes[name]
-    if prototype.subgroup.name == "science-pack" then
-      value = 0
-    end
     if produced[name] then
       produced[name] = produced[name] - value
     else
