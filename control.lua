@@ -24,3 +24,24 @@ end)
 script.on_configuration_changed(function()
   pvp.on_configuration_changed()
 end)
+
+script.on_event({defines.events.on_player_mined_entity}, 
+    function(event) 
+        local player = game.players[event.player_index]
+        for item, value in pairs (event.buffer.get_contents()) do
+            if event.entity.force.name == 'neutral' then
+                player.force.item_production_statistics.on_flow(item, value)
+            end
+        end
+    end
+)
+
+script.on_event({defines.events.on_robot_mined_entity}, 
+    function(event) 
+        for item, value in pairs (event.buffer.get_contents()) do
+            if event.entity.force.name == 'neutral' then
+                event.robot.force.item_production_statistics.on_flow(item, value)
+            end
+        end
+    end
+)
