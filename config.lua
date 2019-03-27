@@ -143,10 +143,10 @@ config.get_config = function()
 
   data.teams =
   {
-    {name = "Aria", color = "orange", team = "1", members = {}},
-    {name = "Luna", color = "purple", team = "2", members = {}},
-    {name = "Penny", color = "red", team = "-", members = {}},
-    {name = "Lilah", color = "green", team = "-", members = {}}
+    {name = "Aria", color = "white", team = "1", members = {}},
+    {name = "Luna", color = "black", team = "2", members = {}},
+    {name = "Penny", color = "orange", team = "-", members = {}},
+    {name = "Lilah", color = "gray", team = "-", members = {}}
   }
 
 
