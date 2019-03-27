@@ -7,14 +7,14 @@ config.get_config = function()
 
   data.game_config =
   {
-    time_limit = 0,
-    allow_spectators = false,
+    time_limit = 90,
+    allow_spectators = true,
     no_rush_time = 0,
     base_exclusion_time = 0,
     reveal_team_positions = true,
-    reveal_map_center = true,
-    team_walls = true,
-    team_turrets = true,
+    reveal_map_center = false,
+    team_walls = false,
+    team_turrets = false,
     turret_ammunition =
     {
       options = {"firearm-magazine"},
@@ -30,11 +30,11 @@ config.get_config = function()
 
   data.victory =
   {
-    last_silo_standing = true,
-    space_race = true,
+    last_silo_standing = false,
+    space_race = false,
     required_rockets_sent = 1,
-    production_score = false,
-    required_production_score = 50000000,
+    production_score = true,
+    required_production_score = 0,
     oil_harvest = false,
     required_oil = 10000000,
     kill_score = false,
@@ -74,16 +74,16 @@ config.get_config = function()
     defcon_mode = false,
     max_players = 0,
     defcon_timer = 5,
-    starting_chest_multiplier = 5,
+    starting_chest_multiplier = 1,
     research_level =
     {
       options = {"none"},
-      selected = "none"
+      selected = "logistic-science-pack"
     },
-    average_team_displacement = math.floor(game.surfaces[1].get_starting_area_radius()) * 4,
-    always_day = false,
+    average_team_displacement = 8000,
+    always_day = true,
     evolution_factor = 0,
-    duplicate_starting_area_entities = false,
+    duplicate_starting_area_entities = true,
     technology_price_multiplier = 1
   }
 
@@ -143,21 +143,23 @@ config.get_config = function()
 
   data.teams =
   {
-    {name = game.backer_names[math.random(#game.backer_names)], color = "orange", team = "-", members = {}},
-    {name = game.backer_names[math.random(#game.backer_names)], color = "purple", team = "-", members = {}}
+    {name = "Aria", color = "orange", team = "1", members = {}},
+    {name = "Luna", color = "purple", team = "2", members = {}},
+    {name = "Penny", color = "red", team = "-", members = {}},
+    {name = "Lilah", color = "green", team = "-", members = {}}
   }
 
 
   data.starting_equipment =
   {
     options = {"none", "small", "medium", "large"},
-    selected = "none"
+    selected = "large"
   }
 
   data.starting_chest =
   {
     options = {"none", "small", "medium", "large"},
-    selected = "none"
+    selected = "large"
   }
 
   data.inventory_list =
@@ -221,40 +223,33 @@ config.get_config = function()
     },
     large =
     {
-      ["iron-plate"] = 200,
-      ["pipe"] = 100,
-      ["pipe-to-ground"] = 20,
-      ["copper-plate"] = 200,
-      ["steel-plate"] = 200,
-      ["electronic-circuit"] = 400,
+      ["iron-plate"] = 500,
+      ["pipe"] = 200,
+      ["pipe-to-ground"] = 150,
+      ["copper-plate"] = 250,
+      ["electronic-circuit"] = 250,
       ["iron-gear-wheel"] = 250,
-      ["transport-belt"] = 400,
-      ["underground-belt"] = 40,
-      ["splitter"] = 40,
-      ["repair-pack"] = 20,
-      ["inserter"] = 200,
-      ["burner-inserter"] = 50,
-      ["small-electric-pole"] = 50,
-      ["burner-mining-drill"] = 50,
-      ["electric-mining-drill"] = 50,
-      ["stone-furnace"] = 100,
-      ["steel-furnace"] = 50,
-      ["electric-furnace"] = 20,
-      ["assembling-machine-1"] = 50,
-      ["assembling-machine-2"] = 40,
-      ["assembling-machine-3"] = 20,
-      ["fast-inserter"] = 100,
-      ["long-handed-inserter"] = 100,
-      ["medium-electric-pole"] = 50,
-      ["substation"] = 10,
-      ["big-electric-pole"] = 10,
+      ["transport-belt"] = 800,
+      ["underground-belt"] = 100,
+      ["splitter"] = 25,
+      ["inserter"] = 500,
+      ["burner-inserter"] = 10,
+      ["small-electric-pole"] = 200,
+      ["electric-mining-drill"] = 100,
+      ["stone-furnace"] = 200,
+      ["assembling-machine-1"] = 20,
+      ["assembling-machine-2"] = 20,
+      ["fast-inserter"] = 50,
+      ["long-handed-inserter"] = 50,
       ["boiler"] = 10,
       ["steam-engine"] = 20,
       ["chemical-plant"] = 20,
-      ["oil-refinery"] = 5,
+      ["oil-refinery"] = 8,
       ["pumpjack"] = 10,
-      ["offshore-pump"] = 2,
-      ["wood"] = 50
+      ["radar"] = 5,
+      ["coal"] = 200,
+      ["iron-chest"] = 100,
+      ["storage-tank"] = 15,
     }
   }
 
@@ -287,19 +282,14 @@ config.get_config = function()
     large =
     {
       ["steel-axe"] = 3,
-      ["submachine-gun"] = 1,
-      ["piercing-rounds-magazine"] = 40,
-      ["combat-shotgun"] = 1,
-      ["piercing-shotgun-shell"] = 20,
-      ["rocket-launcher"] = 1,
-      ["rocket"] = 80,
-      ["construction-robot"] = 25,
+      ["construction-robot"] = 75,
       ["car"] = 1,
       ["power-armor"] = 1,
       ["fusion-reactor-equipment"] = 1,
       ["exoskeleton-equipment"] = 1,
-      ["energy-shield-equipment"] = 2,
-      ["personal-roboport-mk2-equipment"] = 1
+      ["personal-roboport-mk2-equipment"] = 3,
+      ["battery-equipment"] = 3,
+      ["rocket-fuel"] = 10
     }
   }
 
