@@ -1,24 +1,25 @@
 local function get_total_production_counts(production_statistics)
   local produced = production_statistics.input_counts
   local consumed = production_statistics.output_counts
-  for name, value in pairs (produced) do
+  -- create superset dictionary of consumed and produced
+  local net_produced = {}
+  for k, _ in pairs(produced) do net_produced[k] = 0 end
+  for k, _ in pairs(consumed) do net_produced[k] = 0 end
+  for name, _ in pairs(net_produced) do
+    local num_produced = 0
+    local num_consumed = 0
     local prototype = game.item_prototypes[name]
-    if prototype.group.name == "intermediate-products" then
-      if prototype.subgroup.name == "science-pack" then
-        consumed[name] = 0
-      else
-        consumed[name] = value
-      end
-    end
-  end
-  for name, value in pairs (consumed) do
-    if produced[name] then
-      produced[name] = produced[name] - value
+    if produced[name] then num_produced = produced[name] end
+    if consumed[name] then num_consumed = consumed[name] end
+    if prototype.subgroup.name == "science-pack" then
+      net_produced[name] = num_produced
+    elseif prototype.group.name == "intermediate-products" then
+      net_produced[name] = math.min(0, num_produced-num_consumed)
     else
-      produced[name] = -value
+      net_produced[name] = num_produced-num_consumed
     end
   end
-  return produced
+  return net_produced
 end
 
 local function get_raw_resources()
