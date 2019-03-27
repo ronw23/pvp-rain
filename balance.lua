@@ -25,7 +25,7 @@ local make_modifier_list = function()
     },
     force_modifiers =
     {
-      worker_robots_speed_modifier = 0,
+      worker_robots_speed_modifier = 2.25,
       worker_robots_storage_bonus = 0,
       worker_robots_battery_modifier = 0,
       mining_drill_productivity_bonus = 0,
