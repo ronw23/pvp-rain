@@ -282,12 +282,12 @@ config.get_config = function()
     large =
     {
       ["steel-axe"] = 3,
-      ["construction-robot"] = 75,
+      ["construction-robot"] = 50,
       ["car"] = 1,
       ["power-armor"] = 1,
       ["fusion-reactor-equipment"] = 1,
       ["exoskeleton-equipment"] = 1,
-      ["personal-roboport-mk2-equipment"] = 3,
+      ["personal-roboport-mk2-equipment"] = 2,
       ["battery-equipment"] = 3,
       ["rocket-fuel"] = 10
     }
